@@ -1,0 +1,1 @@
+# Java8-Sealed-Class
