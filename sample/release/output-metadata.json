@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.kunminx.keyvalue",
+  "variantName": "processReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 202070,
+      "versionName": "2.2.7-beta",
+      "outputFile": "sample-release.apk"
+    }
+  ]
+}

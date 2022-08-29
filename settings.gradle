@@ -1,0 +1,5 @@
+rootProject.name = "SealedClass"
+include ':sample'
+include ':sealed'
+include ':sealed-compiler'
+include ':sealed-annotation'
