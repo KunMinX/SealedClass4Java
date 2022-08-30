@@ -1,4 +1,8 @@
-开发中 ...
+## 让 Java 8 也能像 Kotlin 一样使用 Sealed Class
+
+```groovy
+implementation 'com.github.KunMinX:Java8-Sealed-Class:1.0.0-beta'
+```
 
 ```
 Copyright 2019-present KunMinX
