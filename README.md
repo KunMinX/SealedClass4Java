@@ -20,7 +20,7 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```groovy
-implementation 'com.github.KunMinX:Java8-Sealed-Class:1.3.0-beta'
+implementation 'com.github.KunMinX:SealedClass4Java:1.4.0-beta'
 ```
 
 &nbsp;

@@ -15,10 +15,10 @@ ext {
 
     ARTIFACT_DESCRIPTION = 'Make Java 8 use Sealed Class like Kotlin.'
 
-    POM_URL='https://github.com/KunMinX/Java8-Sealed-Class'
-    POM_SCM_URL='https://github.com/KunMinX/Java8-Sealed-Class/tree/master'
-    POM_SCM_CONNECTION='scm:git:github.com/KunMinX/Java8-Sealed-Class.git'
-    POM_SCM_DEV_CONNECTION='scm:git:ssh://github.com/KunMinX/Java8-Sealed-Class.git'
+    POM_URL='https://github.com/KunMinX/SealedClass4Java'
+    POM_SCM_URL='https://github.com/KunMinX/SealedClass4Java/tree/master'
+    POM_SCM_CONNECTION='scm:git:github.com/KunMinX/SealedClass4Java.git'
+    POM_SCM_DEV_CONNECTION='scm:git:ssh://github.com/KunMinX/SealedClass4Java.git'
 
     POM_DEVELOPER_ID='KunMinX'
     POM_DEVELOPER_NAME='KunMinX'
