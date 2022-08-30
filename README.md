@@ -1,8 +1,66 @@
-## 让 Java 8 也能像 Kotlin 一样使用 Sealed Class
+研发故事：[《Kotlin Sealed Class 太香了，Java 8 也想用怎么办？》](https://juejin.cn/post/7137571636781252622/)
+
+&nbsp;
+
+## 依赖
+
+项目根目录 build.gradle 添加如下依赖：
+
+```
+allprojects {
+    repositories {
+        // ...
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+```
+
+模块 build.gradle 添加如下依赖：
 
 ```groovy
 implementation 'com.github.KunMinX:Java8-Sealed-Class:1.0.0-beta'
 ```
+
+&nbsp;
+
+## 使用说明
+
+1.创建一个接口，添加 SealedClass 注解，且接口名开头 _ 下划线，
+
+```java
+@SealedClass
+public interface _TestEvent {
+  void resultTest1(@Param String a, int b);
+  void resultTest2(@Param String a, @Param int b, int c, String d);
+}
+```
+
+2.编译即可生成目标类，例如 TestEvent，然后我们像 Kotlin 一样使用该类：
+
+```java
+//创建一个 “密封类” 实例
+TestEvent event = TestEvent.ResultTest1("textx");
+
+//根据 id 分流
+switch (event.id) {
+  case TestEvent.ResultTest1.ID:
+    TestEvent.ResultTest1 event1 = (TestEvent.ResultTest1) event;
+
+    //拷贝
+    event1.copy(1);
+    
+    //获取参数
+    Log.d("---", event1.paramA);
+    Log.d("---", String.valueOf(event1.resultB));
+    break;
+  case TestEvent.ResultTest2.ID:
+    break;
+}
+```
+
+&nbsp;
+
+## License
 
 ```
 Copyright 2019-present KunMinX
