@@ -20,7 +20,7 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```groovy
-implementation 'com.github.KunMinX:Java8-Sealed-Class:1.1.0-beta'
+implementation 'com.github.KunMinX:Java8-Sealed-Class:1.2.0-beta'
 ```
 
 &nbsp;
@@ -37,7 +37,7 @@ public interface _TestEvent {
 }
 ```
 
-2.编译即可生成目标类，例如 TestEvent，然后我们像 Kotlin 一样使用该类：
+2.编译即可生成目标类，例如 TestEvent，然后可以像 Kotlin 一样使用该类：
 
 ```java
 //创建一个 “密封类” 实例
@@ -60,7 +60,11 @@ switch (event.id) {
 }
 ```
 
-提示：当参数列表为空，例如 void resultTest1()，适用于无参消息发送场景，故不提供 copy 方法。
+提示：
+
+1.当参数列表为空，例如 void test()，属于无参消息发送场景，故不对其提供 copy 方法。
+
+2.@Param 参数是专为 MVI-Dispatcher 模型设计，日常使用直接忽视即可。
 
 &nbsp;
 

@@ -124,6 +124,11 @@ public class SealedClassProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.STATIC)
                     .returns(ClassName.get(typeElement.getEnclosingElement().toString(), className));
 
+            MethodSpec.Builder mtInsBuilder1 = MethodSpec.methodBuilder(innerClassName)
+                    .addModifiers(Modifier.PUBLIC)
+                    .addModifiers(Modifier.STATIC)
+                    .returns(ClassName.get(typeElement.getEnclosingElement().toString(), className));
+
             StringBuilder sb = new StringBuilder();
             StringBuilder sbStatic = new StringBuilder();
 
@@ -160,9 +165,14 @@ public class SealedClassProcessor extends AbstractProcessor {
               mtCopyBuilder.addParameters(psResults);
               mtCopyBuilder.returns(ClassName.get(typeElement.getEnclosingElement().toString(), className + "." + innerClassName));
               mtCopyBuilder.addStatement("return new $N($N)", innerClassName, sbb);
+              innerClassBuilder.addMethod(mtCopyBuilder.build());
               mtInsBuilder.addParameters(psParams);
               mtInsBuilder.addStatement("return new $N($N)", innerClassName, sbbStatic);
-              innerClassBuilder.addMethod(mtCopyBuilder.build());
+              if (psParams.size() == 0) {
+                mtInsBuilder1.addParameters(psResults);
+                mtInsBuilder1.addStatement("return new $N($N)", innerClassName, sbb);
+                classBuilder.addMethod(mtInsBuilder1.build());
+              }
             } else {
               mtInsBuilder.addStatement("return new $N()", innerClassName);
             }
