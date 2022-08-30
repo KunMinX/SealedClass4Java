@@ -20,7 +20,7 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```groovy
-implementation 'com.github.KunMinX:Java8-Sealed-Class:1.2.0-beta'
+implementation 'com.github.KunMinX:Java8-Sealed-Class:1.3.0-beta'
 ```
 
 &nbsp;
@@ -64,7 +64,7 @@ switch (event.id) {
 
 1.当参数列表为空，例如 void test()，属于无参消息发送场景，故不对其提供 copy 方法。
 
-2.@Param 参数是专为 MVI-Dispatcher 模型设计，日常使用直接忽视即可。
+2.@Param 参数是专为 [MVI-Dispatcher](https://github.com/KunMinX/MVI-Dispatcher) 模型设计，日常使用无视即可。
 
 &nbsp;
 

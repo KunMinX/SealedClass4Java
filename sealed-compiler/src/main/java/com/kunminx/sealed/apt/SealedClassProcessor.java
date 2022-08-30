@@ -103,7 +103,7 @@ public class SealedClassProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PUBLIC)
                     .addModifiers(Modifier.FINAL)
                     .addModifiers(Modifier.STATIC)
-                    .initializer("$S", ClassName.get(typeElement.getEnclosingElement().toString(), className) + "." + innerClassName)
+                    .initializer("$S", ClassName.get(typeElement.getEnclosingElement().toString(), className) + "$" + innerClassName)
                     .build();
             innerClassBuilder.addField(fbID);
 
