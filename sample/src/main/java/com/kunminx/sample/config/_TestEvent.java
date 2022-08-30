@@ -8,5 +8,5 @@ import com.kunminx.sealed.annotation.SealedClass;
 @SealedClass
 public interface _TestEvent {
   void resultTest1(@Param String a, int b);
-  void resultTest2(@Param String a, @Param int b, int c);
+  void resultTest2(@Param String a, @Param int b, int c, String d);
 }
