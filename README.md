@@ -1,4 +1,4 @@
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h5ouspvmkyj21fd0u0tbu.jpg)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h5p2q0vwoej21fh0u0goc.jpg)
 
 研发故事：[《Kotlin Sealed Class 太香了，Java 8 也想用怎么办？》](https://juejin.cn/post/7137571636781252622/)
 
@@ -32,39 +32,26 @@ implementation 'com.github.KunMinX:Java8-Sealed-Class:1.3.0-beta'
 ```java
 @SealedClass
 public interface _TestEvent {
-  void resultTest1(@Param String a, int b);
-  void resultTest2(@Param String a, @Param int b, int c, String d);
+  void resultTest1(String a, int b);
+  void resultTest2(String a, int b, int c);
 }
 ```
 
 2.编译即可生成目标类，例如 TestEvent，然后可以像 Kotlin 一样使用该类：
 
 ```java
-//创建一个 “密封类” 实例
 TestEvent event = TestEvent.ResultTest1("textx");
-
-//根据 id 分流
 switch (event.id) {
   case TestEvent.ResultTest1.ID:
     TestEvent.ResultTest1 event1 = (TestEvent.ResultTest1) event;
-
-    //拷贝
     event1.copy(1);
-    
-    //获取参数
-    Log.d("---", event1.paramA);
-    Log.d("---", String.valueOf(event1.resultB));
+    event1.paramA;
+    event1.resultB;
     break;
   case TestEvent.ResultTest2.ID:
     break;
 }
 ```
-
-提示：
-
-1.当参数列表为空，例如 void test()，属于无参消息发送场景，故不对其提供 copy 方法。
-
-2.@Param 参数是专为 [MVI-Dispatcher](https://github.com/KunMinX/MVI-Dispatcher) 模型设计，日常使用无视即可。
 
 &nbsp;
 
