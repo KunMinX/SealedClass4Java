@@ -6,15 +6,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kunminx.sample.bean.User;
+import com.kunminx.sample.config.TestEvent_;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO tip：默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV，
- *  为方便未安装 NDK 开发者，我们另行提供 mmkvSample 分支，
- *  MMKV 示例可见 mmkvSample 分支 App.java
- * <p>
  * Create by KunMinX at 2022/7/19
  */
 public class MainActivity extends AppCompatActivity {
@@ -38,5 +35,16 @@ public class MainActivity extends AppCompatActivity {
 //      Log.d("---users", configs.users().get().toString());
 //      Log.d("---content", configs.users().get().get(0).content);
     });
+
+    TestEvent_.ResultTest1 resultTest1 = new TestEvent_.ResultTest1("x", 1);
+
+    TestEvent_ event = TestEvent_.ResultTest1("textx");
+
+    switch (event.id) {
+      case TestEvent_.ResultTest1.ID:
+        break;
+      case TestEvent_.ResultTest2.ID:
+        break;
+    }
   }
 }

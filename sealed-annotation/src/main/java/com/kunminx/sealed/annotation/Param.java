@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Create by KunMinX at 2022/7/20
  */
 @Retention(RetentionPolicy.SOURCE)
-@Target(ElementType.TYPE)
-public @interface SealedClass {
+@Target(ElementType.PARAMETER)
+public @interface Param {
 
 }
