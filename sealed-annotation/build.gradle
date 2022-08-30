@@ -13,12 +13,12 @@ ext {
     PUBLISH_VERSION = appVersionName
     VERSION_CODE = appVersionCode
 
-    ARTIFACT_DESCRIPTION = 'Eliminate the KeyValue boilerplate code of the Android project, reduce key, value, get, put, init to one, no longer KV explosion.'
+    ARTIFACT_DESCRIPTION = 'Make Java 8 use Sealed Class like Kotlin.'
 
-    POM_URL='https://github.com/KunMinX/KeyValueX'
-    POM_SCM_URL='https://github.com/KunMinX/KeyValueX/tree/master'
-    POM_SCM_CONNECTION='scm:git:github.com/KunMinX/KeyValueX.git'
-    POM_SCM_DEV_CONNECTION='scm:git:ssh://github.com/KunMinX/KeyValueX.git'
+    POM_URL='https://github.com/KunMinX/Java8-Sealed-Class'
+    POM_SCM_URL='https://github.com/KunMinX/Java8-Sealed-Class/tree/master'
+    POM_SCM_CONNECTION='scm:git:github.com/KunMinX/Java8-Sealed-Class.git'
+    POM_SCM_DEV_CONNECTION='scm:git:ssh://github.com/KunMinX/Java8-Sealed-Class.git'
 
     POM_DEVELOPER_ID='KunMinX'
     POM_DEVELOPER_NAME='KunMinX'
