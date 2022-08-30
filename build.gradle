@@ -4,8 +4,8 @@ buildscript {
     ext {
         appTargetSdk = 32
         appMinSdk = 23
-        appVersionCode = 100000
-        appVersionName = "1.0.0-beta"
+        appVersionCode = 101000
+        appVersionName = "1.1.0-beta"
     }
     repositories {
         gradlePluginPortal()

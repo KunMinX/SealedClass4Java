@@ -20,7 +20,7 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```groovy
-implementation 'com.github.KunMinX:Java8-Sealed-Class:1.0.0-beta'
+implementation 'com.github.KunMinX:Java8-Sealed-Class:1.1.0-beta'
 ```
 
 &nbsp;
@@ -59,6 +59,8 @@ switch (event.id) {
     break;
 }
 ```
+
+提示：当参数列表为空，例如 void resultTest1()，适用于无参消息发送场景，故不提供 copy 方法。
 
 &nbsp;
 

@@ -127,43 +127,47 @@ public class SealedClassProcessor extends AbstractProcessor {
             StringBuilder sb = new StringBuilder();
             StringBuilder sbStatic = new StringBuilder();
 
-            for (VariableElement ve : parameters) {
-              String paramName;
-              boolean isParam = false;
-              if (ve.getAnnotation(Param.class) != null) {
-                paramName = "param" + upperCaseFirst(ve.getSimpleName().toString());
-                isParam = true;
-              } else {
-                paramName = "result" + upperCaseFirst(ve.getSimpleName().toString());
-              }
+            if (parameters.size() > 0) {
+              for (VariableElement ve : parameters) {
+                String paramName;
+                boolean isParam = false;
+                if (ve.getAnnotation(Param.class) != null) {
+                  paramName = "param" + upperCaseFirst(ve.getSimpleName().toString());
+                  isParam = true;
+                } else {
+                  paramName = "result" + upperCaseFirst(ve.getSimpleName().toString());
+                }
 
-              FieldSpec fbInner = FieldSpec.builder(TypeName.get(ve.asType()), paramName)
-                      .addModifiers(Modifier.PUBLIC)
-                      .addModifiers(Modifier.FINAL)
-                      .build();
-              innerClassBuilder.addField(fbInner);
-              ps.add(ParameterSpec.get(ve));
-              if (isParam) psParams.add(ParameterSpec.get(ve));
-              if (!isParam) psResults.add(ParameterSpec.get(ve));
-              consInnerBuilder.addStatement("this.$N = $N", paramName, ve.getSimpleName().toString());
-              if (isParam) sb.append("this.").append(paramName).append(",");
-              else sb.append(ve.getSimpleName().toString()).append(",");
-              if (isParam) sbStatic.append(ve.getSimpleName().toString()).append(",");
-              else sbStatic.append(getDefaultValue(ve)).append(",");
+                FieldSpec fbInner = FieldSpec.builder(TypeName.get(ve.asType()), paramName)
+                        .addModifiers(Modifier.PUBLIC)
+                        .addModifiers(Modifier.FINAL)
+                        .build();
+                innerClassBuilder.addField(fbInner);
+                ps.add(ParameterSpec.get(ve));
+                if (isParam) psParams.add(ParameterSpec.get(ve));
+                if (!isParam) psResults.add(ParameterSpec.get(ve));
+                consInnerBuilder.addStatement("this.$N = $N", paramName, ve.getSimpleName().toString());
+                if (isParam) sb.append("this.").append(paramName).append(",");
+                else sb.append(ve.getSimpleName().toString()).append(",");
+                if (isParam) sbStatic.append(ve.getSimpleName().toString()).append(",");
+                else sbStatic.append(getDefaultValue(ve)).append(",");
+              }
+              String sbb = sb.toString();
+              sbb = sbb.substring(0, sbb.length() - 1);
+              String sbbStatic = sbStatic.toString();
+              sbbStatic = sbbStatic.substring(0, sbbStatic.length() - 1);
+              consInnerBuilder.addParameters(ps);
+              mtCopyBuilder.addParameters(psResults);
+              mtCopyBuilder.returns(ClassName.get(typeElement.getEnclosingElement().toString(), className + "." + innerClassName));
+              mtCopyBuilder.addStatement("return new $N($N)", innerClassName, sbb);
+              mtInsBuilder.addParameters(psParams);
+              mtInsBuilder.addStatement("return new $N($N)", innerClassName, sbbStatic);
+              innerClassBuilder.addMethod(mtCopyBuilder.build());
+            } else {
+              mtInsBuilder.addStatement("return new $N()", innerClassName);
             }
-            String sbb = sb.toString();
-            sbb = sbb.substring(0, sbb.length() - 1);
-            String sbbStatic = sbStatic.toString();
-            sbbStatic = sbbStatic.substring(0, sbbStatic.length() - 1);
-            consInnerBuilder.addParameters(ps);
             innerClassBuilder.addMethod(consInnerBuilder.build());
-            mtCopyBuilder.addParameters(psResults);
-            mtCopyBuilder.returns(ClassName.get(typeElement.getEnclosingElement().toString(), className + "." + innerClassName));
-            mtCopyBuilder.addStatement("return new $N($N)", innerClassName, sbb);
-            innerClassBuilder.addMethod(mtCopyBuilder.build());
             classBuilder.addType(innerClassBuilder.build());
-            mtInsBuilder.addParameters(psParams);
-            mtInsBuilder.addStatement("return new $N($N)", innerClassName, sbbStatic);
             classBuilder.addMethod(mtInsBuilder.build());
           }
         }
