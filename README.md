@@ -1,3 +1,5 @@
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h5ouspvmkyj21fd0u0tbu.jpg)
+
 研发故事：[《Kotlin Sealed Class 太香了，Java 8 也想用怎么办？》](https://juejin.cn/post/7137571636781252622/)
 
 &nbsp;
