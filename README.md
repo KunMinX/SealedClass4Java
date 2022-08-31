@@ -55,6 +55,8 @@ switch (event.id) {
 }
 ```
 
+3.进阶使用详见 https://juejin.cn/post/7137571636781252622#heading-2
+
 &nbsp;
 
 ## License
